@@ -6,6 +6,8 @@ const colors = {
   'header': '#fff',
   'text': '#e6e2f7',
   'inactive': '#8e8e8f',
+  'border': '#000000',
+  'inputBackground': '#dcdcdc',
 };
 
 export default colors;
