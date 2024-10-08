@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native';
 import colors from '../colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ItemsList from '../Components/ItemsList';
 
 export default function ActivityScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Activity Screen</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ItemsList type="activities" />
+    </SafeAreaView>
   );
 }
 
