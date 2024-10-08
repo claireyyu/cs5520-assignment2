@@ -27,6 +27,10 @@ export default function TabNavigator() {
         },
         tabBarActiveTintColor: colors.highlight,
         tabBarInactiveTintColor: colors.inactive,
+        headerStyle: {
+          backgroundColor: colors.primary,
+        },
+        headerTintColor: colors.header,
       })}
     >
       <Tab.Screen name="Activities" component={ActivityScreen} />
