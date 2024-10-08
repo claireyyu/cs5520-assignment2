@@ -5,7 +5,7 @@ import SettingsScreen from '../Screens/SettingsScreen';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
-
+import colors from '../colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +22,11 @@ export default function TabNavigator() {
             return <AntDesign name="setting" size={size} color={color} />;
           }
         },
+        tabBarStyle: {
+          backgroundColor: colors.primary,
+        },
+        tabBarActiveTintColor: colors.highlight,
+        tabBarInactiveTintColor: colors.inactive,
       })}
     >
       <Tab.Screen name="Activities" component={ActivityScreen} />

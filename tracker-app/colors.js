@@ -1,11 +1,10 @@
 const colors = {
-  primary: 'white',
-  border: 'gray',
-  background: 'white',
-  text: 'black',
-  shadow: '#000',
-  warning: 'red',
-  transparent: 'rgba(0, 0, 0, 0.3)',
+  'primary': '#363678',
+  'secondary': '#ababcb',
+  'background': '#fff',
+  'highlight': '#e7b216',
+  'text': '#e6e2f7',
+  'inactive': '#8e8e8f',
 };
 
 export default colors;
