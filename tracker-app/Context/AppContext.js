@@ -4,8 +4,8 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [activities, setActivities] = useState([
-    { id: '1', name: 'Running', date: '2024-01-01', duration: '30 min' },
-    { id: '2', name: 'Cycling', date: '2024-01-01', duration: '45 min' },
+    { id: '1', name: 'Running', date: '2024-01-01', duration: '30 min', isSpecial: false },
+    { id: '2', name: 'Cycling', date: '2024-01-01', duration: '45 min', isSpecial: true },
   ]);
 
   const [diet, setDiet] = useState([
