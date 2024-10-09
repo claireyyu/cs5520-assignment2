@@ -7,8 +7,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
-
+import { useTheme } from '../Context/ThemeProvider';
 export default function AddDietScreen() {
+  const { backgroundColor, textColor } = useTheme();
   const { diet, setDiet } = useContext(AppContext);
   const navigation = useNavigation();
   const [dietDescription, setDietDescription] = useState('');
@@ -61,7 +62,7 @@ export default function AddDietScreen() {
     <ThemedSafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.inputContainer}>
-          <Text style={styles.label}>Description *</Text>
+          <Text style={[styles.label, { color: textColor }]}>Description *</Text>
           <TextInput
             style={styles.longInput}
             value={dietDescription}
@@ -72,7 +73,7 @@ export default function AddDietScreen() {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.label}>Calories *</Text>
+          <Text style={[styles.label, { color: textColor }]}>Calories *</Text>
           <TextInput
               style={styles.input}
               value={calories}
@@ -80,7 +81,7 @@ export default function AddDietScreen() {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.label}>Date *</Text>
+          <Text style={[styles.label, { color: textColor }]}>Date *</Text>
           <TextInput
             style={styles.input}
             value={date ? date.toDateString() : ''}

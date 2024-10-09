@@ -7,8 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
+import { useTheme } from '../Context/ThemeProvider';
+
 
 export default function AddActivityScreen() {
+  const { backgroundColor, textColor } = useTheme();
+
 
   const { activities, setActivities } = useContext(AppContext);
   const navigation = useNavigation();
@@ -74,22 +78,24 @@ export default function AddActivityScreen() {
   return (
     <ThemedSafeAreaView style={styles.container} >
       <View style={styles.dropDownContainer}>
-        <Text style={styles.label}>Activity *</Text>
+        <Text style={[styles.label, { color: textColor }]}>Activity *</Text>
         <DropDownPicker
-          open={open}
-          setOpen={setOpen}
-          value={activity}
-          items={items}
-          setValue={setActivity}
-          setItems={setItems}
-          style={styles.dropdown}
-          zIndex={3000}
-          zIndexInverse={1000}
-        />
+            open={open}
+            setOpen={setOpen}
+            value={activity}
+            items={items}
+            setValue={setActivity}
+            setItems={setItems}
+            style={styles.dropdown}
+            zIndex={3000}
+            zIndexInverse={1000}
+            textStyle={{ color: colors.primary }}
+            placeholder="Select An Activity"
+          />
       </View>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Duration (min) *</Text>
+        <Text style={[styles.label, { color: textColor }]}>Duration (min) *</Text>
         <TextInput
           style={styles.input}
           value={duration}
@@ -97,7 +103,7 @@ export default function AddActivityScreen() {
         />
       </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Date *</Text>
+        <Text style={[styles.label, { color: textColor }]}>Date *</Text>
         <TextInput
           style={styles.input}
           value={date ? date.toDateString() : ''}
@@ -161,5 +167,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: colors.inputBackground,
     padding: 10,
+    color: colors.primary,
   },
 });

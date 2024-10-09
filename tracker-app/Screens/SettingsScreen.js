@@ -10,7 +10,7 @@ export default function SettingsScreen() {
 
   return (
     <ThemedSafeAreaView style={styles.container}>
-      <View style={styles.buttonContainer}>
+      <View style={[styles.buttonContainer, ]}>
         <Button
           title="Toggle Theme"
           onPress={toggleTheme}
