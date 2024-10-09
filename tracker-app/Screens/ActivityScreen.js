@@ -1,19 +1,14 @@
-import { View, Text, StyleSheet } from 'react-native';
-import colors from '../colors';
+import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ItemsList from '../Components/ItemsList';
+import { useTheme } from '../Context/ThemeProvider';
+import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 
 export default function ActivityScreen() {
+
   return (
-    <SafeAreaView style={styles.container}>
+    <ThemedSafeAreaView>
       <ItemsList type="activities" />
-    </SafeAreaView>
+    </ThemedSafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.secondary,
-  },
-});

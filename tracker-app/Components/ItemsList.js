@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FlatList, View, Text, StyleSheet } from 'react-native';
-import { AppContext } from '../Context/AppContext'; // You'll need to create this context
+import { AppContext } from '../Context/AppProvider'; // You'll need to create this context
 import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../colors';
 import Entypo from '@expo/vector-icons/Entypo';

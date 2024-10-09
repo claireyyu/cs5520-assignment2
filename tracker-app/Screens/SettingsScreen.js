@@ -1,23 +1,34 @@
-import { View, Text, StyleSheet } from 'react-native';
-import colors from '../colors';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from 'react-native';
+import { useTheme } from '../Context/ThemeProvider';
+import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 
 export default function SettingsScreen() {
+  const { backgroundColor, textColor, toggleTheme } = useTheme();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Button title="Toggle Theme" onPress={() => {
-        console.log('Toggle Theme');
-      }} />
-    </SafeAreaView>
+    <ThemedSafeAreaView style={styles.container}>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Toggle Theme"
+          onPress={toggleTheme}
+          color={textColor}
+        />
+      </View>
+    </ThemedSafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.secondary,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonContainer: {
+    padding: 5,
+    borderRadius: 5,
+  }
 });

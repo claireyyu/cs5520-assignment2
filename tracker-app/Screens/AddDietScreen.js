@@ -5,7 +5,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AppContext } from '../Context/AppContext';
+import { AppContext } from '../Context/AppProvider';
 
 export default function AddDietScreen() {
   const { diet, setDiet } = useContext(AppContext);
@@ -28,14 +28,14 @@ export default function AddDietScreen() {
     setDate(currentDate);
   };
 
-  const handleCancelActivity = () => {
+  const handleCancelDiet = () => {
     navigation.goBack();
   };
 
-  const handleSaveActivity = () => {
+  const handleSaveDiet = () => {
     let isInputValid = true;
 
-    if (!activity || !duration || !date || isNaN(duration) || parseFloat(duration) <= 0) {
+    if (!dietDescription || !calories || !date || isNaN(calories) || parseFloat(calories) <= 0) {
       isInputValid = false;
     }
 
@@ -58,44 +58,47 @@ export default function AddDietScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.dropDownContainer}>
-        <Text style={styles.label}>Description *</Text>
-        <TextInput
-          style={styles.longInput}
-          value={dietDescription}
-          onChangeText={setDietDescription}
-        />
-      </View>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Calories *</Text>
-        <TextInput
-            style={styles.input}
-            value={calories}
-            onChangeText={setCalories}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Date *</Text>
-        <TextInput
-          style={styles.input}
-          value={date ? date.toDateString() : ''}
-          editable={false}
-          onPress={handleShowDatePicker}
-        />
-        {showDatePicker && (
-          <DateTimePicker
-            value={date || new Date()}
-            mode="date"
-            display="inline"
-            onChange={handleDateChange}
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Description *</Text>
+          <TextInput
+            style={styles.longInput}
+            value={dietDescription}
+            onChangeText={setDietDescription}
+            multiline={true}
+            numberOfLines={4}
+            textAlignVertical="top"
           />
-        )}
-      </View>
-      <View style={styles.buttonContainer}> 
-        <Button title="Cancel" onPress={handleCancelActivity} />
-        <Button title="Save" onPress={handleSaveActivity} />
-      </View>
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Calories *</Text>
+          <TextInput
+              style={styles.input}
+              value={calories}
+              onChangeText={setCalories}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Date *</Text>
+          <TextInput
+            style={styles.input}
+            value={date ? date.toDateString() : ''}
+            editable={false}
+            onPress={handleShowDatePicker}
+          />
+          {showDatePicker && (
+            <DateTimePicker
+              value={date || new Date()}
+              mode="date"
+              display="inline"
+              onChange={handleDateChange}
+            />
+          )}
+        </View>
+        <View style={styles.buttonContainer}> 
+          <Button title="Cancel" onPress={handleCancelDiet} />
+          <Button title="Save" onPress={handleSaveDiet} />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -110,18 +113,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     flexGrow: 1,
   },
-  dropDownContainer: {
-    paddingHorizontal: 30,
-    marginBottom: 20,
-    zIndex: 3000,
-    elevation: 3,
-  },
   inputContainer: {
     marginBottom: 20,
-    zIndex: 1000,
   },
   buttonContainer: {
-    zIndex: 1000,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,

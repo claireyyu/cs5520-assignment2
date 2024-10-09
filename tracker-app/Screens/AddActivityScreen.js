@@ -5,7 +5,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AppContext } from '../Context/AppContext';
+import { AppContext } from '../Context/AppProvider';
+import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 
 export default function AddActivityScreen() {
   const { activities, setActivities } = useContext(AppContext);
@@ -70,7 +71,7 @@ export default function AddActivityScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ThemedSafeAreaView style={styles.container}>
       <View style={styles.dropDownContainer}>
         <Text style={styles.label}>Activity *</Text>
         <DropDownPicker
@@ -116,7 +117,7 @@ export default function AddActivityScreen() {
         <Button title="Save" onPress={handleSaveActivity} />
       </View>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedSafeAreaView>
   );
 };
 
