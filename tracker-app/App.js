@@ -25,8 +25,8 @@ export default function App() {
             }}
           >
             <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }} />
-            <Stack.Screen name="AddActivityScreen" component={AddActivityScreen} options={{ headerTitle: 'Add An Activity' }} />
-            <Stack.Screen name="AddDietScreen" component={AddDietScreen} options={{ headerTitle: 'Add A Diet' }}/>
+            <Stack.Screen name="AddActivityScreen" component={AddActivityScreen} options={{ headerTitle: 'Add An Activity', headerBackTitleVisible: false}} />
+            <Stack.Screen name="AddDietScreen" component={AddDietScreen} options={{ headerTitle: 'Add A Diet', headerBackTitleVisible: false }}/>
           </Stack.Navigator>
         </NavigationContainer>
       </AppProvider>
