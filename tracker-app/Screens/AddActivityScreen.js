@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppContext } from '../Context/AppContext';
 
-const AddActivityScreen = () => {
+export default function AddActivityScreen() {
   const { activities, setActivities } = useContext(AppContext);
   const navigation = useNavigation();
   const [activity, setActivity] = useState('');
@@ -119,8 +119,6 @@ const AddActivityScreen = () => {
     </SafeAreaView>
   );
 };
-
-export default AddActivityScreen
 
 const styles = StyleSheet.create({
   container: {
