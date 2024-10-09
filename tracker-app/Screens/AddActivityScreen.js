@@ -9,6 +9,7 @@ import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 
 export default function AddActivityScreen() {
+
   const { activities, setActivities } = useContext(AppContext);
   const navigation = useNavigation();
   const [activity, setActivity] = useState('');
@@ -71,7 +72,7 @@ export default function AddActivityScreen() {
   };
 
   return (
-    <ThemedSafeAreaView style={styles.container}>
+    <ThemedSafeAreaView style={styles.container} >
       <View style={styles.dropDownContainer}>
         <Text style={styles.label}>Activity *</Text>
         <DropDownPicker
@@ -124,7 +125,6 @@ export default function AddActivityScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.secondary,
   },
   scrollViewContent: {
     paddingHorizontal: 30,
@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: colors.primary,
     marginTop: 10,
   },
   dropdown: {
@@ -162,6 +161,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: colors.inputBackground,
     padding: 10,
-    color: colors.primary,
   },
 });

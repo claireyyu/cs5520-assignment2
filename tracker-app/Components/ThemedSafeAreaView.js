@@ -7,7 +7,7 @@ export default function ThemedSafeAreaView({ children, style }) {
   const { backgroundColor, textColor } = useTheme();
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor, color: textColor }, style]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: backgroundColor, color: textColor }, style]}>
       {children}
     </SafeAreaView>
   );

@@ -6,6 +6,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppContext } from '../Context/AppProvider';
+import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 
 export default function AddDietScreen() {
   const { diet, setDiet } = useContext(AppContext);
@@ -57,7 +58,7 @@ export default function AddDietScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ThemedSafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Description *</Text>
@@ -100,14 +101,13 @@ export default function AddDietScreen() {
           <Button title="Save" onPress={handleSaveDiet} />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedSafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.secondary,
   },
   scrollViewContent: {
     paddingHorizontal: 30,
