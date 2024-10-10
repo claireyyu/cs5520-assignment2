@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ActivityScreen from '../Screens/ActivityScreen';
 import DietScreen from '../Screens/DietScreen';
 import SettingsScreen from '../Screens/SettingsScreen';

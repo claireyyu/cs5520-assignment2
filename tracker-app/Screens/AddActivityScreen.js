@@ -4,15 +4,12 @@ import colors from '../colors';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 import { useTheme } from '../Context/ThemeProvider';
 
-
 export default function AddActivityScreen() {
   const { backgroundColor, textColor } = useTheme();
-
 
   const { activities, setActivities } = useContext(AppContext);
   const navigation = useNavigation();

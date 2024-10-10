@@ -5,7 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../colors';
 import Entypo from '@expo/vector-icons/Entypo';
 
-
 const ItemsList = ({ type }) => {
   const { activities, diet } = useContext(AppContext);
 
@@ -13,15 +12,14 @@ const ItemsList = ({ type }) => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <View style={styles.itemHeader}>
+      <View style={styles.nameContainer}>
         <Text style={styles.title}>{item.name}</Text>
-        {item.isSpecial && <Entypo name="warning" size={16} color="yellow" />}
       </View>
       <View style={styles.dataContainer}>
+        {item.isSpecial && <Entypo name="warning" size={16} color="yellow" style={styles.icon} />}
         <Text style={styles.data}>{item.date.split(',').map(word => word.trim()).join(' ')}</Text>
         <Text style={styles.data}>{type === 'activities' ? `${item.duration}` : `${item.calories}`}</Text>
       </View>
-
     </View>
   );
 
@@ -41,39 +39,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   item: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: colors.primary,
     padding: 12,
     margin: 8,
     borderRadius: 5,
   },
-  itemHeader: {
-    flex: 1,
+  nameContainer: {
+    flex: 2,
     flexDirection: 'row',
     alignItems: 'center',
+    marginRight: 10,
   },
   title: {
-    flex: 1,
     fontSize: 16,
     fontWeight: 'bold',
     color: colors.text,
-    marginRight: 10,
-    textAlign: 'center',
+    marginRight: 5,
+  },
+  icon: {
+    marginLeft: 5,
   },
   dataContainer: {
     flex: 3,
     flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   data: {
-    flex: 1,
     textAlign: 'center',
     fontWeight: 'bold',
     backgroundColor: colors.background,
     color: colors.primary,
     padding: 5,
-    marginHorizontal: 4,
+    marginLeft: 4,
+    minWidth: 60,
   },
 });
 

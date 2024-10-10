@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from 'react-native';
 import { useTheme } from '../Context/ThemeProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';

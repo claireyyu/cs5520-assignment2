@@ -1,13 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 'react-native';
 import colors from '../colors';
-import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 import { useTheme } from '../Context/ThemeProvider';
+
 export default function AddDietScreen() {
   const { backgroundColor, textColor } = useTheme();
   const { diet, setDiet } = useContext(AppContext);
