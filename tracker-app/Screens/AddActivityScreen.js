@@ -35,13 +35,12 @@ export default function AddActivityScreen() {
     if (!date) {
       setDate(new Date()); // Set current date when opening picker for the first time
     }
-    setShowDatePicker(true);
+      setShowDatePicker(!showDatePicker);
   };
 
   const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+    setDate(selectedDate);
     setShowDatePicker(false);
-    setDate(currentDate);
   };
 
   const handleCancelActivity = () => {
@@ -105,7 +104,7 @@ export default function AddActivityScreen() {
           style={styles.input}
           value={date ? date.toDateString() : ''}
           editable={false}
-          onPress={handleShowDatePicker}
+          onPressIn={handleShowDatePicker}
         />
         {showDatePicker && (
           <DateTimePicker
@@ -146,8 +145,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     zIndex: 1000,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
+    justifyContent: 'space-around',
+    alighItems: 'center',
+    marginVertical: 20,
   },
   label: {
     fontSize: 16,

@@ -20,13 +20,12 @@ export default function AddDietScreen() {
     if (!date) {
       setDate(new Date()); // Set current date when opening picker for the first time
     }
-    setShowDatePicker(true);
+    setShowDatePicker(!showDatePicker);
   };
 
   const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+    setDate(selectedDate);
     setShowDatePicker(false);
-    setDate(currentDate);
   };
 
   const handleCancelDiet = () => {
