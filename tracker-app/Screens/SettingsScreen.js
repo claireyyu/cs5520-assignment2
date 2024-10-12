@@ -13,7 +13,7 @@ export default function SettingsScreen() {
         <Button
           title="Toggle Theme"
           onPress={toggleTheme}
-          color={textColor}
+          // color={textColor}
         />
       </View>
     </ThemedSafeAreaView>

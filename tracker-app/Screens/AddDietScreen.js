@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 import { useTheme } from '../Context/ThemeProvider';
+import DatePicker from '../Components/DatePicker';
+
 
 export default function AddDietScreen() {
   const { backgroundColor, textColor } = useTheme();
@@ -15,18 +17,6 @@ export default function AddDietScreen() {
   const [calories, setCalories] = useState('');
   const [date, setDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
-
-  const handleShowDatePicker = () => {
-    if (!date) {
-      setDate(new Date()); // Set current date when opening picker for the first time
-    }
-    setShowDatePicker(!showDatePicker);
-  };
-
-  const handleDateChange = (event, selectedDate) => {
-    setDate(selectedDate);
-    setShowDatePicker(false);
-  };
 
   const handleCancelDiet = () => {
     navigation.goBack();
@@ -78,23 +68,7 @@ export default function AddDietScreen() {
               onChangeText={setCalories}
           />
         </View>
-        <View style={styles.inputContainer}>
-          <Text style={[styles.label, { color: textColor }]}>Date *</Text>
-          <TextInput
-            style={styles.input}
-            value={date ? date.toDateString() : ''}
-            editable={false}
-            onPress={handleShowDatePicker}
-          />
-          {showDatePicker && (
-            <DateTimePicker
-              value={date || new Date()}
-              mode="date"
-              display="inline"
-              onChange={handleDateChange}
-            />
-          )}
-        </View>
+        <DatePicker date={date} setDate={setDate} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker} />
         <View style={styles.buttonContainer}> 
           <Button title="Cancel" onPress={handleCancelDiet} />
           <Button title="Save" onPress={handleSaveDiet} />

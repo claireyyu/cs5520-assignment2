@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../Context/AppProvider';
 import ThemedSafeAreaView from '../Components/ThemedSafeAreaView';
 import { useTheme } from '../Context/ThemeProvider';
+import DatePicker from '../Components/DatePicker';
 
 export default function AddActivityScreen() {
   const { backgroundColor, textColor } = useTheme();
@@ -30,18 +31,6 @@ export default function AddActivityScreen() {
     {label: 'Cycling', value: 'Cycling'},
     {label: 'Hiking', value: 'Hiking'},
   ]);
-
-  const handleShowDatePicker = () => {
-    if (!date) {
-      setDate(new Date()); // Set current date when opening picker for the first time
-    }
-      setShowDatePicker(!showDatePicker);
-  };
-
-  const handleDateChange = (event, selectedDate) => {
-    setDate(selectedDate);
-    setShowDatePicker(false);
-  };
 
   const handleCancelActivity = () => {
     navigation.goBack();
@@ -98,23 +87,7 @@ export default function AddActivityScreen() {
           onChangeText={setDuration}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={[styles.label, { color: textColor }]}>Date *</Text>
-        <TextInput
-          style={styles.input}
-          value={date ? date.toDateString() : ''}
-          editable={false}
-          onPressIn={handleShowDatePicker}
-        />
-        {showDatePicker && (
-          <DateTimePicker
-            value={date || new Date()}
-            mode="date"
-            display="inline"
-            onChange={handleDateChange}
-          />
-        )}
-      </View>
+      <DatePicker date={date} setDate={setDate} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker} />
       <View style={styles.buttonContainer}> 
         <Button title="Cancel" onPress={handleCancelActivity} />
         <Button title="Save" onPress={handleSaveActivity} />
