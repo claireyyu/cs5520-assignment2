@@ -46,7 +46,7 @@ export default function AddActivityScreen() {
     if (!isInputValid) {
       Alert.alert('Invalid Input', 'Please check your input values');
     } else {
-      const isSpecial = ((activity === 'running' || activity === 'weights') && duration > 60) ? true : false;
+      const isSpecial = ((activity === 'Running' || activity === 'Weights') && duration > 60) ? true : false;
       const newActivity = {
         id: Date.now().toString(),
         name: activity,
